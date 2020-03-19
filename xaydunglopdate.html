@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp date</title>
+</head>
+<body>
+<script>
+    let myDate = function (day,month,year) {
+        this.day = day;
+        this.month = month;
+        this.year = year ;
+
+        this.getDay = function () { return this.day ;
+
+        };
+        this.getMonth = function () { return this.month ;
+
+        };
+        this.getYear = function () { return this.year ;
+
+        };
+        this.setDay = function (day) {
+            this.day = day ; return this.day;
+        };
+        this.setMonth = function (month) {
+            this.month = month ;return this.month;
+        };
+        this.setYear = function (year) {
+            this.year = year ; return this.year ;
+        };
+        this.setmyDate = function (day,month,year) {
+            this.day = day;
+            this.month = month;
+            this.year = year
+        };
+        this.toString = function () {
+            return this.day + '/' + this.month +'/' + this.year ;
+
+        }
+
+
+    };
+    let date = new myDate(1,1,2000);
+    let a = date.getDay();
+    let b = date.getMonth();
+    let c = date.getYear();
+    alert (a + "/" + b + "/" + c);
+    let d = date.setDay(2);
+    let e = date.setDay(4);
+    let f = date.setDay(2020);
+    alert(d + "/" + e + "/" + f);
+
+    date.setmyDate(3,4,2020);
+    alert(date.toString());
+
+
+
+</script>
+
+</body>
+</html>
