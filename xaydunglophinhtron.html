@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp đường tròn</title>
+</head>
+<body>
+<canvas id="myCircle" width="50%" height="50%"></canvas>
+<script>
+    let  Circle = function (radius,colorOfCircle) {
+        this.radius = radius;
+        this.colorOfCircle = colorOfCircle;
+        this.getRadius = function () { return this.getRadius = radius };
+        this.getCircleArea = function () { return Math.PI*radius*radius};};
+
+    let a = new Circle(20) ;
+    document.write(a.getRadius() + "<br>");
+    document.write(a.getCircleArea()+ '<br>' );
+
+
+
+</script>
+</body>
+</html>
