@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lớp mô tả Mèo và Chuột</title>
+</head>
+<body>
+<script>
+  let rat = function (name,weight,speed,status,say) {
+    this.name = name;
+    this.weight = parseInt(weight);
+    this.speed = parseInt(speed);
+    this.status = status;
+    this.speak = say;
+    this.setSpeak = function (x) {this.speed = name + x + "<br>"};
+     if ( this.status === "alive"){ this.speed = speed} else if (this.status === "death") {this.speed = 0}
+  };
+  let cat = function (name,weight,speed,say) {
+    this.name = name;
+    this.weight = parseInt(weight) ;
+    this.speed = parseInt(speed) ;
+    this.speak = say;
+    this.setSpeak = function (x) {this.speed = name + x + '<br>'};
+    this.rush = function (rat) { if (this.speed > rat.speed){rat.status = "death"}}
+    this.eat = function (rat) { if ( rat.status === "death" && rat.weight > 0)
+    { this.weight ++ ; rat.weight-- }};
+    this.checkCatweigh = function () { return this.weight;};
+    this.checkRatweigh = function (rat) {return  rat.weight};
+  };
+    let tom = new cat('Tom',4,7,'Tom : Death await you all');
+    let doraemon = new cat("Doraemon",8,2,'Doraemon : Rat is my fear');
+    let jerry = new rat('Jerry',2,8,"alive",'Jerry : Catch me if you cant');
+    let micky = new rat('Mickey',3,5,"alive",'Mickey : Fucking Watt Disney');
+    document.write(tom.speak +'<br>');
+    document.write(doraemon.speak + '<br>');
+    document.write(jerry.speak +'<br>');
+    document.write(micky.speak +'<br>');
+    tom.rush(jerry);
+    document.write('Jerry status is :' +jerry.status +'<br>');
+    tom.rush(micky);
+    document.write('Mickey status is :' + micky.status +'<br>');
+    document.write("Tom cân mickey nặng :" + tom.checkRatweigh(micky) +'<br>');
+    tom.eat(micky);
+    doraemon.eat(micky);
+    tom.eat(micky);
+    document.write("Cân nặng của Tom là :" +tom.weight +'<br>');
+    document.write("Cân nặng của Doraemon là :" +doraemon.weight);
+
+
+
+
+</script>
+</body>
+</html>
