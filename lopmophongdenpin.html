@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lớp mô phỏng đèn pin</title>
+</head>
+<body>
+<script>
+    let battery = function () {
+        this.setEnergy = function (energy) { this.energy = energy ;
+        };
+        this.checkEnergy = function () { return this.energy;
+        };
+        this.disgreaseBattery = function () { if ( this.energy > 0)
+        { this.energy -- ;}
+        };
+
+    };
+    let flashlight = function () {
+        this.setBattery = function (battery) { return this.battery = battery;
+        };
+        this.getBatteryInfo = function () { return this.battery.checkEnergy();};
+        this.light = function () {if (this.status) { alert("Lighting") } else {alert("Is not Working")}};
+        this.turnOn = function () { return this.status = true};
+        this.turnOff = function () { return this.status = false};
+
+        };
+    let newBattery = new battery();
+    newBattery.setEnergy(90);
+    document.write("Năng lượng có trong pin :"+ newBattery.checkEnergy() +'<br>');
+    let doraemon = new flashlight();
+    doraemon.setBattery(newBattery);
+    document.write("Battery info is :" + doraemon.getBatteryInfo() + "<br>");
+    document.write("Turn On Doraemon" +'<br>');
+    doraemon.turnOn();newBattery.disgreaseBattery();
+    doraemon.light();
+    document.write("Battery info is :" + doraemon.getBatteryInfo() + '<br>');
+    document.write("Turn Off Doraemon" + '<br>');
+    doraemon.turnOff();
+    doraemon.light();
+    document.write("Battery info is :" + doraemon.getBatteryInfo() + '<br>');
+
+</script>
+</body>
+</html>
