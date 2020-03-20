@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adam và Eva và cuộc thi ăn táo</title>
+</head>
+<body>
+<script>
+    let apple = function (nutrium) {
+    this.nutrium = nutrium;
+    this.decreaseNutrium = function () { if (this.nutrium > 0){ this.nutrium--}else{alert("Apple is not pending")}};
+    this.checkApple = function () { return  this.nutrium};
+    this.setNutrium = function (x) { this.nutrium = x}; return this.nutrium ;
+    };
+    let human = function (name,gender,age,weight,speak) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.weight = weight;
+        this.speak = speak;
+        this.checkGoods = function (apple) { apple.checkApple();};
+        this.eat = function (apple) { apple.decreaseNutrium();this.weight++;};
+        this.setSpeak = function (abc) { this.speak = name +':' + abc};
+    };
+    let tao = new apple(10);
+    let Adam = new human('Adam','Gay',20,60,'I m groot');
+    let Eva = new human('Eva','Lesbian',18,45,'Death await you all');
+    document.write(Adam.speak + '<br>');
+    document.write(Eva.speak + '<br>');
+    Adam.setSpeak("A ! Táo");
+    Eva.setSpeak('Ăn thôi.');
+    document.write(Adam.speak + '<br>');
+    document.write(Eva.speak + '<br>');
+    document.write(Adam.checkGoods(tao));
+    Adam.eat(tao);
+    Adam.eat(tao);
+    document.write("Cân nặng Adam hiện tại là :" + Adam.weight + "<br>");
+    Eva.eat(tao);
+    Eva.eat(tao);
+    Eva.eat(tao);
+    Eva.eat(tao);
+    Eva.eat(tao);
+    Eva.eat(tao);
+    document.write("Cân nặng của Eva hiện tại là :" + Eva.weight + '<br>');
+    Adam.setSpeak("Mẹ con chó ăn hết táo của chụy");
+    Eva.setSpeak("Còn hạt này mày ăn nốt đi");
+    document.write(Adam.speak + '<br>');
+    document.write(Eva.speak + '<br>');
+    document.write(tao.checkApple());
+
+</script>
+
+</body>
+</html>
