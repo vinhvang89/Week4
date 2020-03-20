@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công tắc đèn và bóng đèn</title>
+</head>
+<body>
+<script>
+    let switchElectric = function () {
+        this.switchOn = function () { return this.switchStatus = true};
+        this.switchOff = function () { return this.switchStatus = false};
+        this.connectoLamb = function (lamb) { if (this.switchStatus)
+        { lamb.lighting } else {lamb.notWorking}
+        }
+    };
+    let lamb = function () {
+      this.lighting = alert("Lamb is lightinh");
+      this.notWorking = alert("Lamb is not working");
+    };
+    let congtac = new switchElectric();
+    let dendien = new lamb();
+    congtac.connectoLamb(dendien);
+    congtac.switchOn();
+    congtac.switchOff();
+</script>
+
+</body>
+</html>
