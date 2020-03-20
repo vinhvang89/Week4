@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lớp mô phỏng remote TV</title>
+</head>
+<body>
+<script>
+  let television = function (tvstatus,channel,volume) {
+    this.tvstatus = tvstatus;
+    this.channel = channel;
+    this.volume = volume;
+  };
+  let remote = function () {
+      this.connect = function (television) { this.television =television };
+      this.selectChannel = function (number) {this.television.channel = number};
+      this.power = function (x) { if ( x === 'On' && this.television.tvstatus ==='Off')
+          this.television.tvstatus = 'On'; else if ( x === 'Off' && this.television.tvstatus === 'On')
+              this.television.tvstatus = 'Off';};
+      this.setVolume = function (y) { if ( this.television.volume >= 0 && this.television.volume <= 100 )
+          if ( y === "+") this.television.volume++ ;else  if ( y === "-") this.television.volume--;};
+      this.nextChannel = function () { this.television.channel ++ };
+      this.prevChannel = function () { this.television.channel -- };
+  };
+  let tivi = new television('Off',4,30);
+  let dk = new remote();
+  dk.connect(tivi);
+  dk.selectChannel(10);
+  dk.setVolume('+');
+  document.write(tivi.volume)
+
+
+</script>
+</body>
+</html>
