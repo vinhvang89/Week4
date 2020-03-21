@@ -12,7 +12,7 @@
     this.speed = parseInt(speed);
     this.status = status;
     this.speak = say;
-    this.setSpeak = function (x) {this.speed = name + x + "<br>"};
+    this.setSpeak = function (x) {this.speak = name + x + "<br>"};
      if ( this.status === "alive"){ this.speed = speed} else if (this.status === "death") {this.speed = 0}
   };
   let cat = function (name,weight,speed,say) {
