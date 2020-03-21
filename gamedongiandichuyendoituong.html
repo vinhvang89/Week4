@@ -5,31 +5,38 @@
     <title>Làm game đơn giàn di chuyển đối tượng</title>
 </head>
 <body>
-<div id = "game"></div>
+<div id="game"></div>
 <script>
-   function Hero( image,top,left,size) {
-       this.image = image;
-       this.top = top;
-       this.left = left;
-       this.size = size;
-       this.getHeroElement = function () {
-           return '<img width="'+ this.size + '"' +
-               ' height="'+ this.size + '"' +
-               ' src="' + this.image +'"' +
-               ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />'
-       };
-       this.moveRight = function () { this.left += 20 ;};
+    let Character = function (image,top,left,height,width) {
+        this.image = image;
+        this.top = top;
+        this.left = left;
+        this.height = height;
+        this.width = width;
+        this.getCharacter = function () { return '<img width ="' + this.width +'" height="'+this.height+'" scr= "'+this.image+'" ' +
+            'style="top:'+this.top+'px;left:'+this.left+'px;position:absolute;"/>';};
+        this.moveRight = function (x) {
+            this.left +=x;
+        };
+        this.moveDown = function (y) {
+            this.top += y;
+        };
+        this.moveLeft = function (z) {
+            this.left += -z;
+        };
+        this.moveUp = function (u) {
+            this.top += -u;
+        };
+    };
+    let Shin = new Character('shin.jpg',60,60,200,200);
+    function start() {
+        if (Shin.left <= window.innerWidth - Shin.width ) Shin.moveRight(100);
+        else if ( Shin.top <= window.innerHeight - Shin.height) Shin.moveDown(150);
+        document.getElementById("game").innerHTML = Shin.getCharacter();
+        setTimeout(start,500)
+    }
+    start();
 
-   }
-   let hero = new Hero('pikachu.png',50,80,100);
-   function start() {
-       if(hero.left < window.innerWidth - hero.size){
-           hero.moveRight();
-       }
-       document.getElementById('game').innerHTML = hero.getHeroElement();
-       setTimeout(start, 500)
-   }
-   start();
-
+</script>
 </body>
 </html>
