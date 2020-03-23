@@ -13,8 +13,9 @@
         this.left = left;
         this.height = height;
         this.width = width;
-        this.getCharacter = function () { return '<img width ="' + this.width +'" height="'+this.height+'" scr= "'+this.image+'" ' +
-            'style="top:'+this.top+'px;left:'+this.left+'px;position:absolute;"/>';};
+        this.getCharacter = function () {
+            return  '<img src="'+this.image+'" width="'+this.width+'" height="'+this.height+'" style="left: '+this.left+'px ;' +
+                ' top: '+this.top+'px ;position:absolute"></img>';};
         this.moveRight = function (x) {
             this.left +=x;
         };
@@ -28,10 +29,10 @@
             this.top += -u;
         };
     };
-    let Shin = new Character('shin.jpg',60,60,200,200);
+    let Shin = new Character('shin.jpg',0,90,200,200);
     function start() {
-        if (Shin.left <= window.innerWidth - Shin.width ) Shin.moveRight(100);
-        else if ( Shin.top <= window.innerHeight - Shin.height) Shin.moveDown(150);
+        if (Shin.left < window.innerWidth - Shin.width ) Shin.moveRight(100);
+        else if ( Shin.top <  window.innerHeight - Shin.height) Shin.moveDown(150);
         document.getElementById("game").innerHTML = Shin.getCharacter();
         setTimeout(start,500)
     }
