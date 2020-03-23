@@ -2,9 +2,97 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Phi công trẻ bắt bà già</title>
 </head>
-<body>
-$END$
+<body onkeydown="Run()">
+<canvas id="jetgame" height="700px" width="1368px" style="border: 1px solid mediumaquamarine"></canvas>
+<script>
+    const jetPositionX = 550;
+    const jetPositionY = 30;
+    const bigPositionX = 1368;
+    const bigPositionY = 768;
+    const mapWidth = 1368;
+    const mapHeight = 768;
+    const speed = 20;
+    const directionUp = "maybaylen";
+    const directionDown = "maybayxuong";
+    const directionLeft = "maybaytrai";
+    const directionRight = "maybayphai";
+    const c = document.getElementById("jetgame");
+    const ctx = c.getContext("2d");
+    let Jet = function () {
+        this.jetPositionX = jetPositionX;
+        this.jetPositionY = jetPositionY;
+        this.speed = speed;
+        this.direction = directionUp;
+        this.drawMap = function () {
+            let img = new Image();
+            img.src = "map.jpg";
+            ctx.drawImage(img, 0, 0);
+        };
+        this.drawBig = function () {
+            let img = new Image();
+            img.src = "bagia.jpg";
+            ctx.drawImage(img, bigPositionX*Math.random(), bigPositionY*Math.random());
+        };
+        this.drawJet = function () {
+            let img = new Image();
+            img.src = this.direction + ".jpg";
+            ctx.drawImage(img, this.jetPositionX, this.jetPositionY);
+        };
+        this.clearJet = function () {
+            ctx.clearRect(0, 0, mapWidth, mapHeight);
+        };
+        this.jetGoUp = function () {
+            this.direction = directionUp;
+            this.jetPositionY -= this.speed;
+        };
+        this.jetGoDown = function () {
+            this.direction = directionDown;
+            this.jetPositionY += this.speed;
+        };
+        this.jetGoLeft = function () {
+            this.direction = directionLeft;
+            this.jetPositionX -= this.speed;
+        };
+        this.jetGoRight = function () {
+            this.direction = directionRight;
+            this.jetPositionX += this.speed;
+        };
+    };
+    let jet = new Jet();
+    
+
+    function moveJet(event) {
+        switch (event.keyCode) {
+            case 37: {
+                jet.jetGoLeft();
+                break;
+            }
+            case 38: {
+                jet.jetGoUp();
+                break;
+            }
+            case 39: {
+                jet.jetGoRight();
+                break;
+            }
+            case 40: {
+                jet.jetGoDown();
+            }
+        }
+        jet.clearJet();
+        jet.drawMap();
+        jet.drawBig();
+        jet.drawJet();
+    }
+
+    function Run() {
+        window.addEventListener('keydown', this.moveJet);
+    }
+    function Check() {
+        if ( jet.jetPositionX === jet.bigP)
+    }
+</script>
 </body>
 </html>
