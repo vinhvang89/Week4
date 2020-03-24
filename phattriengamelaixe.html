@@ -25,8 +25,8 @@
         this.jetPositionY = jetPositionY;
         this.speed = speed;
         this.direction = directionUp;
-        this.bigPositionX = bigPositionX;
-        this.bigPositionY = bigPositionY;
+        this.bigPositionX = bigPositionX*Math.random();
+        this.bigPositionY = bigPositionY*Math.random();
         this.drawMap = function () {
             let img = new Image();
             img.src = "map.jpg";
@@ -35,7 +35,7 @@
         this.drawBig = function () {
             let img = new Image();
             img.src = "bagia.jpg";
-            ctx.drawImage(img, bigPositionX*Math.random(), bigPositionY*Math.random());
+            ctx.drawImage(img, this.bigPositionX, this.bigPositionY);
         };
         this.drawJet = function () {
             let img = new Image();
@@ -52,6 +52,7 @@
         this.jetGoDown = function () {
             this.direction = directionDown;
             this.jetPositionY += this.speed;
+            console.log(this.jetPositionY);
         };
         this.jetGoLeft = function () {
             this.direction = directionLeft;
@@ -91,6 +92,9 @@
 
     function Run() {
         window.addEventListener('keydown', this.moveJet);
+        if ( jet.jetPositionX + jet.speed > jet.bigPositionX - 100 && jet.jetPositionX + jet.speed < jet.bigPositionX + 100)
+            if (jet.jetPositionY + jet.speed > jet.bigPositionY - 100 && jet.jetPositionY + jet.speed < jet.bigPositionY + 100)
+                alert("Chúc mừng chàng phi công trẻ đã chinh phục được bà già")
     }
 </script>
 </body>
