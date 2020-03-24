@@ -2,9 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Game cờ caro</title>
+
 </head>
+
 <body>
-$END$
+<style>
+    td{
+
+        width: 30px;
+        height: 30px;
+    }
+</style>
+<div id="gamecocaro"></div>
+<script>
+    let board = "";flag = true;let a= new Array('');
+    function caroField() {
+        board = '<table width="'+600+'px" height="'+600+'px"' +
+            ' border="1" cellspacing="0" cellpadding="0"   style="position: absolute;">';
+        for (let i=0;i<20;i++){
+            board += '<tr>' ;
+            for(let j=0;j<20;j++){
+                board+= `<td onclick="changeValue(this,${i},${j})" id=cell-${i}${j} align="center"></td>`
+            }
+            board+= '</tr>'
+        }
+        board += '</table>';
+        document.getElementById("gamecocaro").innerHTML = board;
+    }
+    caroField();
+    function changeValue(cell) {
+        if (flag) {
+            cell.innerHTML = "x";
+            flag = false
+        } else {
+            cell.innerHTML = "o";
+            flag = true
+        }
+        console.log(cell);
+    }
+
+
+</script>
 </body>
 </html>
