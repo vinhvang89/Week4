@@ -17,10 +17,10 @@
 <div id="gamecocaro"></div>
 <script>
     let flag = true;
+    let checker = new Array('');
     let Carogame = function (rows,cols) {
       this.rows = rows;
       this.cols = cols;
-      this.value = new Array('');
       this.drawCaroField = function () {
           board = '<table width="' + this.cols*30 + 'px" height="' + this.rows*30 + 'px"' +
               ' border="1" cellspacing="0" cellpadding="0"   style="position: absolute;">';
@@ -35,9 +35,10 @@
           document.getElementById("gamecocaro").innerHTML = board;
       };
   };
+
   let board = new Carogame(20,20);
   board.drawCaroField();
-  function play(cell) {
+    function play(cell) {
       if (flag === true) {
           cell.innerHTML = "X";
           flag = false
@@ -45,36 +46,16 @@
           cell.innerHTML = "O";
           flag = true
       }
-      let checker = new Array('');
+      console.log(cell);
       for (i = 0; i < 20; i++) {
+          checker[i] = new Array('');
           for (j = 0; j < 20; j++) {
               checker[i][j] = document.getElementById(i + ',' + j).innerHTML;
           }
       }
-      flag1 = false;
-      flag2 = false;
-      for (u = 0; u < 20; u++) {
-          for (v = 0; v < 20; v++) {
-          }
-          if (checker[u][v] === checker[u + 1][v + 1] === checker[u + 2][v + 2] === checker[u + 3][v + 3] === checker[u + 4][v + 4] === "X" ||
-              checker[u + 1][v] === checker[u + 2][v + 1] === checker[u + 3][v + 2] === checker[u + 4][v + 3] === checker[u + 5][v + 4] === "X" ||
-              checker[u][v + 1] === checker[u + 1][v + 2] === checker[u + 2][v + 3] === checker[u + 3][v + 4] === checker[u + 4][v + 5] === "X" ||
-              checker[u][v] === checker[u][v + 1] === checker[u][v + 2] === checker[u][v + 3] === checker[u][v + 4] === "X" ||
-              checker[u][v] === checker[u + 1][v] === checker[u + 2][v] === checker[u + 3][v] === checker[u][v] === "X")
-              flag1 = true;
-          else if (checker[u][v] === checker[u + 1][v + 1] === checker[u + 2][v + 2] === checker[u + 3][v + 3] === checker[u + 4][v + 4] === "O" ||
-              checker[u + 1][v] === checker[u + 2][v + 1] === checker[u + 3][v + 2] === checker[u + 4][v + 3] === checker[u + 5][v + 4] === "O" ||
-              checker[u][v + 1] === checker[u + 1][v + 2] === checker[u + 2][v + 3] === checker[u + 3][v + 4] === checker[u + 4][v + 5] === "O" ||
-              checker[u][v] === checker[u][v + 1] === checker[u][v + 2] === checker[u][v + 3] === checker[u][v + 4] === "O" ||
-              checker[u][v] === checker[u + 1][v] === checker[u + 2][v] === checker[u + 3][v] === checker[u][v] === "O")
-              flag2 = true;
-      }
-      if (flag1 === true) alert("Play X is win"); else if (flag2 === true) alert("Play O is win");
+      console.log(checker);
   }
-
-
-
-
+checkRown
 </script>
 </body>
 </html>
